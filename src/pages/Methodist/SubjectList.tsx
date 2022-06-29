@@ -1,8 +1,12 @@
-import React, { FC } from "react";
+import React, { FC, useState, useEffect } from "react";
+import {IMain, ins3, ISubject} from "../../http/api/subjects";
 
 
 const SubjectList: FC = () => {
-    return <h1>SubjectList</h1>
+
+    return <></>
 };
 
 export default SubjectList;
+
+

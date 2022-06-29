@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import $axios from "../index";
 
 import BaseAPI from "./base";
@@ -13,11 +15,10 @@ class AuthAPI extends BaseAPI {
 
     async createToken(url: string, values: ILogin){
         const res = await $axios.post(`${this.baseUrl}/${url}/`, values)
-        console.log(res)
+        return res
     }
-
 }
 
-let ins = new AuthAPI('auth')
+const ins = new AuthAPI('auth')
 
 export default ins;
