@@ -1,5 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
-import {IMain, ins3, ISubject} from "../../http/api/subjects";
+import React, { FC } from "react";
 
 
 const SubjectList: FC = () => {

@@ -17,6 +17,7 @@ import Permission from "./hoc/Permission";
 // SETTINGS
 import {PermissionEnum} from "./settings";
 
+
 function App() {
 
   return (
