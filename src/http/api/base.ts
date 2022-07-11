@@ -1,9 +1,6 @@
 class BaseAPI {
-    private readonly _baseUrl: string
 
-    constructor(baseUrl: string) {
-        this._baseUrl = baseUrl
-    }
+    constructor(private readonly _baseUrl: string) {}
 
     get baseUrl(): string {
         return this._baseUrl;

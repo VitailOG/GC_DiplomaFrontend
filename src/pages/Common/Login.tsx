@@ -1,48 +1,26 @@
-import React, { FC, useState } from "react";
-import {useNavigate} from "react-router-dom";
+import React, {FC} from "react";
 
-import ins from "../../http/api/auth";
-import ins2 from "../../http/api/students";
-import {useCookies} from "react-cookie";
-
+// import {useCookies} from "react-cookie";
+import {useRedirect} from "../../hooks/useRedirect";
+import {useAppDispatch} from "../../hooks/useRedux";
+import {fetchLogin} from "../../store/actions/auth";
 
 const Login: FC = () => {
-    const navigete = useNavigate()
 
-    const [cookie, setCookie] = useCookies(["access", "refresh"])
+    // const [cookie, setCookie] = useCookies(["access", "refresh"])
 
-    const [data, setData] = useState({
-        username: '',
-        password: ''
-    })
+    const redirect = useRedirect()
 
-    const x = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setData(prevState => ({...data, username: e.target.value}))
-    }
+    const dispatch = useAppDispatch()
 
-    const x1 = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setData(prevState => ({...data, password: e.target.value}))
-    }
-
-    const x2 = async () => {
-         try {
-             const res = await ins.createToken('token/create', data)
-             localStorage.setItem('access', res.data.access)
-             navigete('/subject')
-             // setCookie("access", res.data.access, {domain: "127.0.0.1:8000"})
-             // setCookie("refresh", res.data.refresh)
-         }catch (e) {
-            console.log('error')
-         }
+    const x = (): void => {
+        dispatch(fetchLogin({username: 'admin', password: '2'}))
+        redirect('student')
     }
 
     return <>
-        <input type="text" onChange={x}/> <br/>
-        <input type="password" onChange={x1}/>
-        <br/>
-        <button onClick={x2}>few</button>
-        <br/>
-        </>
+        <button onClick={x}>qwe</button>
+    </>
 };
 
 export default Login;

@@ -1,24 +1,22 @@
-import axios from "axios";
+import { AxiosResponse } from "axios";
 
 import $axios from "../index";
-
 import BaseAPI from "./base";
+import { ILoginResponse } from '../../models/auth'
 
 
-interface ILogin {
+interface ILoginRequest {
     username: string,
     password: string
 }
 
-
 class AuthAPI extends BaseAPI {
 
-    async createToken(url: string, values: ILogin){
-        const res = await $axios.post(`${this.baseUrl}/${url}/`, values)
-        return res
+    async createToken(url: string, values: ILoginRequest): Promise<AxiosResponse<ILoginResponse>>{
+        return await $axios.post(`${this.baseUrl}/${url}/`, values)
     }
 }
 
-const ins = new AuthAPI('auth')
+const authApi = new AuthAPI('auth')
 
-export default ins;
+export default authApi;
